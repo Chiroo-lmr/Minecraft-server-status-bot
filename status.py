@@ -29,17 +29,17 @@ async def on_ready():
 
 async def check_servers():
     global message
-    message = "**# Statut des serveurs minecraft :\n"
+    message = "**# Minecraft servers status :\n"
     for name, address in servers.items():
         server = JavaServer.lookup(address)
         try:
             status = server.status()
         except:
-            status = "Hors ligne"
-        if status and status != "Hors ligne":
+            status = "Offline"
+        if status and status != "Offline":
             message += f"🟢  {name}  UP :\n"
-            message += f"   **{status.players.online} / {status.players.max} joueurs connectés**\n\n"
-        if status == "Hors ligne":
+            message += f"   **{status.players.online} / {status.players.max} players**\n\n"
+        if status == "Offline":
             message += f"🔴  {name}  DOWN.\n\n"
     await delete_and_send_message()
 
@@ -47,9 +47,9 @@ async def delete_and_send_message():
     global count
     global message_id
     global message
-    channel = client.get_channel("The id of the channel where you want your bot to send messages")
+    channel = client.get_channel("channel id")
     if count == 0:
-        first_message = await channel.send("[statut en cours de récupération]")
+        first_message = await channel.send("[searching for the status]")
         message_id = first_message.id
         count = 1
     old_message = await channel.fetch_message(message_id)
