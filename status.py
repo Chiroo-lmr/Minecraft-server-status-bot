@@ -4,13 +4,11 @@ import mcstatus
 from mcstatus import JavaServer
 import asyncio
 
-#Définir les intentions que votre bot va utiliser
 intents = Intents.default()
 intents.guilds = True
 intents.members = True
 intents.messages = True
 
-#Créer l'instance du client Discord en spécifiant les intentions
 client = discord.Client(intents=intents)
 
 servers = {
@@ -60,5 +58,4 @@ async def delete_and_send_message():
     print(message_id)
     pass
 
-#Exécuter le bot
 client.run('TOKEN BOT')
