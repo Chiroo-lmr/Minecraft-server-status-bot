@@ -3,6 +3,8 @@ from discord import Intents
 import mcstatus
 from mcstatus import JavaServer
 import asyncio
+import time
+
 
 intents = Intents.default()
 intents.guilds = True
@@ -51,7 +53,8 @@ async def delete_and_send_message():
         message_id = first_message.id
         count = 1
     old_message = await channel.fetch_message(message_id)
-    message += "**"
+    message += "**\n"
+    message += f"Last update : <t:{round(time.time())}:R>."
     print(message)
     new_message = await old_message.edit(content=message)
     message_id = new_message.id
