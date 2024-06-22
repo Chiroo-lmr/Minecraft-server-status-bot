@@ -14,5 +14,9 @@
  - change "Channel id" by the channel id where you want your bot to send messages
  - change the servers name and their ip in the "servers" var.
 
+# install dependencies
+```pip install discord```
+```pip install mcstatus```
+
  Then run it, it will work fine !
 
